@@ -1,0 +1,672 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+*{
+    margin: 0;padding: 0; /**/
+    scroll-behavior: smooth;/*Khi trượt thanh scroll sẽ tạo hiệu ứng mượt hơn*/
+    transition:all .2s linear;/*Tạo hiệu ứng chuyển đổi cho tất cả từ lúc bắt đầu cho đến lúc kết thúc là 0.2s*/
+}
+.header{
+    width: 100%;height: 76px;
+    background-color: #252524;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.container{
+    background-image: linear-gradient(black, rgb(78, 78, 78));
+    width: 1520px; max-height: 2930px;
+    margin: 80px auto 5px;
+}
+.container h4{
+    margin-left: 80px;
+    color: #fff;
+    letter-spacing: 8px;
+    font-weight: lighter;
+} 
+.logo{
+    width: 305px; /*Thiết lập chiều rộng cho vùng logo*/
+    margin-top: 15px; /*Khoảng cách so với phía trên*/
+}
+.logo a{
+    text-decoration: none; /*Hủy kẻ gạch chân của đối tượng chữ thuộc thẻ a có sẵn*/
+    color: #e76320; /*Thiết lập màu chữ*/
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+    font-weight: bold; /*Thiết lập độ dày chữ*/
+    font-size: 30px; /*Thiết lập size chữ*/
+    margin-right: 40px; /*Khoảng cách so với cạnh phải*/
+    margin-left: 80px;/*Khoảng cách so với cạnh trái*/
+}
+.menu{
+    width: 600px; height: 100%; /*Thiết lập độ rộng và chiều dài cho phần mennu*/
+    margin-left: 250px; /*Khoảng cách so với lề trái*/
+    margin-top: -36px; /*Khoảng cách so với lề trên*/
+}
+.menu ul{
+    display: flex; /*Định dạng các phần tử con của thẻ nav sẽ nằm ngang hàng nhau*/
+    justify-content: space-between;/*Các phần từ con nằm kế và cách đều nhau*/
+}
+.menu ul li{
+    list-style-type: none; /*Hủy bỏ thuộc tính chỉ mục có sẵn*/
+}
+.menu ul li a{
+    text-decoration: none; /*Hủy kẻ gạch chân của đối tượng chữ thuộc thẻ a có sẵn*/
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+    font-weight: normal; /*Thiết lập độ dày chữ*/
+    font-size: 20px;  /*Thiết lập size chữ*/
+    color: white; /*Thiết lập màu chữ*/
+    margin-left: 75px; /*Khoảng cách so với lề trái*/
+    padding: 8px; /*Khoảng không gian giữ chữ so với đường viền của nó*/
+}
+.menu ul li a:hover{
+    color: #e76320; /*Màu chứ sẽ biến đối sang cam khi ta rê chuột vào*/
+    border-radius: 5px; /*Bo quanh 4 góc 5px*/
+    box-shadow: 0 0 5px #e76320, /* Hiện bóng 2 lần tạo phát quang xung quanh viền*/
+                0 0 5px #e76320;
+}
+.menu ul ul{
+    display: list-item; /*Định dạng các phần từ nằm theo tứ tự list từ trên xuống dưới*/
+    top: 0px; /*Căn chỉnh cho phần từ di chuyển từ trên xuống dưới*/
+    position: absolute;/*Căn chỉnh vị trí của phần từ này theo phần tử cha, ở đây là tài liệu html*/
+    opacity: 0; /*Độ mờ của phần từ bằng 0*/
+    border-top: 3px solid #e76320; /*Thiết lập độ dày và màu cho phần viền trên*/
+    visibility: hidden; /*Làm cho phần từ này mờ đi như không có nhưng vẫn chiếm 1 phần không gian*/
+    transition:  top .3s; /*Chỉ định hiệu ứng cho thuộc tính top trong vòng 2s*/
+    margin-left: 60px; /*Thiết lập khoảng cách so với lề trái*/
+    list-style: none;
+}
+.menu ul ul li{
+    position: relative;/*Căn chỉnh vị trí của phần từ này mà không làm ảnh hướng đến các phần tử khác*/
+    list-style-type: none; /*Hủy bỏ thuộc tính chỉ mục có sẵn*/
+    width: 130px; height: 40px;/*Thiết lập chiều rộng và chiều cao cho phần tử*/
+    background-color: #252524;/*Thiết lập màu nền*/
+    border-bottom: 2px solid #fff;/*Thiết lập độ dày và màu cho phần viền dưới*/
+}
+.menu ul ul li a{
+    text-decoration: none; /*Hủy kẻ gạch chân của đối tượng chữ thuộc thẻ a có sẵn*/
+    color: rgb(172, 197, 172);/*Thiết lập màu chữ*/
+    margin-left: 3px;/*Thiết lập khoảng cách so với lề trái*/
+    font-size: 16px;/*Thiết lập size chữ*/
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+}
+.menu ul ul li a:hover{
+    color: #e76320;/*Thiết lập màu chữ thay đổi*/
+    box-shadow: none;/* loại bỏ thuộc tính tạo bóng*/
+}
+.menu ul li:hover > ul{
+    opacity: 1;/*Độ mờ của phần từ bằng 1 tương đương với 100% hiện toàn bộ*/
+    visibility: visible;/*Hiển thị phần từ này*/
+    top: 67px;/*Căn chỉnh cho phần từ di chuyển từ trên xuống dưới*/
+}
+.search-box{
+    display: flex;/*Định dạng các phần tử con của thẻ nav sẽ nằm ngang hàng nhau*/
+    justify-content: space-between;/*Các phần từ con nằm kế và cách đều nhau*/
+    width: 360px;height: 25px;/*Thiết lập chiều rộng và chiều cao*/
+    background: #fff;/*Thiết lập màu nền*/
+    margin-left: 1100px;/*Thiết lập khoảng cách so với lề trái*/
+    margin-top: -80px;/*Khoảng cách so với lề trên*/
+    padding: 5px;/*Khoảng không gian giữ chữ so với đường viền của nó*/
+    border-radius: 25px;/*Bo quanh 4 góc 25px*/
+}
+.search-box .search-txt{
+    width: 200px;/*Thiết lập chiều rộng cho phần tử*/
+    padding: 0 6px;/*Khoảng không gian giữa chữ so với đường viền, trên dưới = 0; trái-phải = 6px*/
+    border: none;/*Hủy bỏ thuộc tính viền*/
+    background: none;/*Hủy bỏ thuộc tính màu nền*/
+    outline: none;/*Hủy bỏ thuộc tính outline*/
+    color: black;/*Thiết lập màu chữ*/
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+}
+.search-box .search-btn{
+    text-decoration: none;
+    background: white;/*Thiết lập màu nền*/
+    color: #e76320;/*Thiết lập màu chữ*/
+    width: 30px; height: 25px;/*Thiết lập chiều rộng và chiều cao*/
+    margin-top: 3px;/*Khoảng cách so với lề trên*/
+    border-radius: 25%;/*Bo quanh 4 góc 25%*/
+}
+html::-webkit-scrollbar{ /*set độ rộng cho thanh cuộn đó.*/
+    width: 10px;
+}
+html::-webkit-scrollbar-track{ /* không gian trống bên dưới thanh cuộn.*/
+    background:#e6af94;
+}
+html::-webkit-scrollbar-thumb{ /*phần tử cuộn có thể kéo để thay đổi kích cỡ*/
+    background:#713c22; /*Màu thanh cuộn*/
+    border-radius: 30px; /*bo đầu thanh cuộn*/
+}
+.cont{
+    position: relative;/*Định vị tuyệt đối cho phần tử*/
+    width: 95%; height: 370px;/*Thiết lập chiều rộng, chiều cao*/
+    margin: 18px auto 35px;/*Thiết lập khoảng cách so với trên 18px, dưới 35px, trái phải căn đều*/
+    /* background-color: #d1d182; */
+}
+.cont h2{
+    color: aqua;
+    font-weight: bold;
+    margin-left: 40px;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.cont h4{
+    margin-left: 80px;
+    color: #fff;
+    letter-spacing: 8px;
+    font-weight: lighter;
+} 
+.b1{
+    display: flex;/*Định dạng các phần tử con của thẻ nav sẽ nằm ngang hàng nhau*/
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+}
+.b1 a img {
+    width: 150px; height: 230px;/*Thiết lập chiều rộng và chiều cao*/
+    margin: 15px 45px 10px;/*Thiết lập khoảng cách từ mép phần từ đến các phía*/
+    cursor: pointer;/*Khi rê chuột đến sẽ có biểu tượng bàn tay*/
+    transform: scale(1);/*Xác định biến đổi tỉ lệ chuyển đổi*/
+    transition: all 0.5s;/*Tạo hiệu ứng chuyển đổi cho tất cả từ lúc bắt đầu cho đến lúc kết thúc là 0.5s*/
+}
+.b1 .wrap .name{
+    text-align: left;/*Căn trái cho phần tử chữ*/
+    margin-left: 40px;/*Căn khoảng cách so với lề trái*/
+}
+.b1 .wrap .name p{
+    color: white;/*Thiết lập màu chữ cho các phần tử p*/
+    font-size: 17px;/*Thiết lập font size*/
+}
+.b1 .wrap .name span{
+    font-size: 12px;/*Thiết lập màu chữ cho các phần tử p*/
+    color: rgb(116, 116, 116);/*Thiết lập font size*/
+    
+}
+.b1 a img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgb(65, 194, 245),
+                0 0 10px rgb(65, 194, 245);
+}
+.cont h3{
+    color: yellowgreen;
+    width: 1350px;
+    font-size: 22px;
+    margin-left: 40px;
+    padding: 20px 0px;
+    border-top: 2px solid yellowgreen;
+}
+.cont .row{
+    margin-left: 40px;
+    width: 50%; height: 100%;
+    /* background-color: rgb(81, 31, 31); */
+}
+.cont button{
+    margin-left: 40px;
+    width: 54%; height: 20%;
+}
+.cont button:hover{
+    background-color: yellowgreen;
+}
+/* ------------------------------Contact--------------- */
+.contact{
+    position: relative;
+    width: 90%; height: 500px;
+    margin: 76px auto 25px;
+    /* background-color: #d1d182; */
+    background-image: linear-gradient(rgba(0,0,0,0.7), orange), url(../Images/bg-contact.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    width: 90%; max-width: 600px;
+    font-family: 'Poppins', sans-serif; /*Thiết lập font chữ*/
+}
+.input-group{
+    margin-bottom: 30px;
+    position: relative;
+}
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+    font-size: 15px;
+}
+label{
+    height: 100%;
+    position: absolute;
+    left: 0;top: 0;
+    padding: 10px;
+    color: #fff;
+    cursor: text;
+    transition: 0.2s;
+}
+button{
+    padding: 10px 0;
+    color: #fff;
+    outline: none;
+    background: transparent;
+    border: 1px solid #fff;
+    width: 620px;
+    cursor: pointer;
+}
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label{
+    top: -35px;
+    font-size: 14px;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.row .input-group{
+    flex-basis: 45%;
+}
+/* --------------------------About----------- */
+.about{
+    position: relative;
+    width: 90%; height: 500px;
+    margin: 76px auto 25px;
+    /* background-color: #d1d182; */
+    background-image: linear-gradient(rgba(0,0,0,0.7), orange), url(../Images/ab3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    
+}
+.about .top{
+    color: rgb(75, 160, 235);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 70px;
+}
+.about .des{
+    width: 90%;
+    color: rgb(195, 221, 245);
+    font-size: 20px;
+    font-style: italic;
+    text-align: justify;
+    padding-top: 70px;
+    margin-left: 50px;
+}
+/* -----------------Details-------------- */
+.dtail{
+    position: relative;/*Định vị tuyệt đối cho phần tử*/
+    width: 89%; height: 400px;/*Thiết lập chiều rộng và chiều cao*/
+    margin: 15px auto;/*Thiết lập khoảng cách trên dươi 15px; trái phải căn đều*/
+    background-color: #82d1a3;/*Thiết lập màu nền*/
+    display: flex;/*Định dạng các phần tử con của thẻ nav sẽ nằm ngang hàng nhau*/
+    background-image:linear-gradient(rgba(0,0,0,0.7), #e76320) ,url(../Images/i1.0.jpg);
+    background-repeat: no-repeat;/*Hình ảnh không lặp lại*/
+    background-size: cover;/*Tự chia kích thước lớn nhất của chiều rộng hoặc chiều cao để phù hợp với nội dung*/
+    background-attachment: fixed;/*Giữ cố định ảnh*/
+    
+}
+.dtail .img-like{
+    width: 280px; height: auto;/*Thiết lập chiều rộng và chiều cao*/
+    /* background-color: rgb(180, 113, 113); */
+    /* float: left; */
+    margin-right: 15px;/*Khoảng cách so với cạnh phải*/
+}
+.dtail .img-like img{
+    width: 80%;height: 80%;/*Thiết lập chiều rộng và chiều cao*/
+    margin: 15px 25px;
+    box-shadow: 6px 6px 6px  black;/*Thiết lập bóng*/
+}
+.dtail .img-like p{
+    width: 80%;height: 6%;/*Thiết lập chiều rộng và chiều cao*/
+    margin-top: -10px;margin-left: 25px;
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 10px;
+    border-radius: 7px;
+    border: 1.5px solid yellow;
+    cursor: pointer;
+    letter-spacing: 3px;/*Thiết khoảng cách giữa các từ*/
+    font-weight: bold;
+}
+.dtail .img-like p:hover{
+    background-color: yellow;
+    color: black;
+    border: 1.5px solid black;
+    box-shadow: 6px 6px 6px  black;
+}
+.dtail .desc{
+    width: 70%; height: 100%;
+    /* background-color: rgb(73, 20, 20); */
+    float: right;
+    margin-right: 15px;
+    display: inline;
+}
+.dtail .desc .name-author{
+    width: 100%; height: 15%;
+    background-color: #fff;
+    margin-right: 15px;
+    margin-top: 15px;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    opacity: .7;
+    color: #fff;
+
+}
+.dtail .desc .name-author h1{
+    letter-spacing: 5px;
+    margin-left: 15px;
+}
+.dtail .desc .name-author p{
+    font-weight:lighter;
+    letter-spacing: 6px;
+    font-size: 12px;
+    margin-left: 15px;
+}
+.desc .summary{
+    width: 100%; height: 60%;
+    /* background-color: rgb(122, 118, 118); */
+    margin-right: 15px;
+    color: rgb(167, 163, 163);
+    font-size: 15px;
+    margin-top: 25px;
+    margin-left: 0px;
+    letter-spacing: 2px;
+}
+.desc .summary p{
+    text-align: justify;
+}
+.desc .summary hr{
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+/* ----------------------- */
+/* -----------------------------Chap---------------------- */
+.chap{
+    position: relative;
+    width: 89%; height: 450px;
+    margin: 15px auto;
+    /* background-color: #e6e67d; */
+    display: flex;
+}
+.chap .chap-left{
+    width: 600px; height: 100%;
+    /* background-color: rgb(180, 113, 113); */
+    float: left;
+    margin-right: 15px;
+}
+.chap .chap-left a{
+    text-decoration: none;
+    color: rgb(116, 116, 116);
+}
+.chap .chap-left a:hover{
+    color: yellow;
+}
+.chap .chap-left h3{
+    font-size: 22px;
+}
+.chap .chap-left a p{
+    font-size: 14px;
+}
+/* -------------------------------------------- */
+.chap-left .chap1{
+    width: 95%; height: 28%;
+    /* background-color: rgb(51, 33, 33); */
+    float: none;
+    margin: 0px;
+    display: flex;
+}
+.chap-left .chap1 .imagechap{
+    width: 140px; height: 110px;
+    background-color: rgb(93, 153, 93);
+    margin-right: 15px;
+}
+.chap-left .chap1 .imagechap img{
+    width: 100%; height: 100%;
+    border: 1px solid #fff;
+}
+.chap-left h4{
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+.chap-right h4{
+    margin-top: 35px;
+}
+/* --------------------------------------------------- */
+
+.chap .chap-right{
+    width: 800px; height: 100%;
+    /* background-color: rgb(73, 20, 20); */
+    float: right;
+    margin-top: -35px;
+}
+.chap .chap-right ul{
+    display: flex;
+}
+.chap .chap-right ul li{
+    list-style: none;
+    margin-right: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    background: black;
+    color: #fff
+}
+.chap .chap-right .active{
+    background: rgb(73, 20, 20);
+}
+.chap .chap-right ul li:hover{
+    background: yellow;
+    color: black;
+    cursor: pointer;
+}
+.chap .chap-right hr{
+    margin-top: 25px;
+    margin-bottom: 30px;
+    color:rgb(116, 116, 116)
+}
+.chap .chap-right h4{
+    margin-left: 0px;
+}
+/* -------------------------------popular------------------- */
+.popular{
+    position: relative;
+    width: 95%; max-height: 2900px;
+    margin: 76px auto 10px;
+    /* background-color: #d1d182; */
+}
+.popular h3{
+    color: aqua;
+    margin-left: 40px;
+    font-size: 22px;
+    padding-top: 20px;
+}
+.popular .pp-new{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.pp-left{
+    width: 400px;height: 400px;
+    margin-top: 15px;margin-left: 40px;margin-right: 30px;
+    /* background: brown; */
+    cursor: pointer;
+}
+.pp-left img{
+    width: 100%; height: 100%;
+    border: 1px solid #fff;
+    margin-bottom: 40px;
+}
+.pp-left .text{
+    width: 100%; height: 100%;
+    /* border: 1px solid #fff; */
+    text-align: justify;
+    line-height: 25px;
+    color: rgb(116, 116, 116);
+}
+.pp-left .text h4{
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    margin-left: 0px;
+  letter-spacing: normal;
+}
+.pp-right{
+    width: 65%;height: 900px;
+    margin: 15px 10px;
+    /* background: brown; */
+    cursor: pointer;
+}
+.pp-right a{
+    text-decoration: none;
+}
+.pp-right h5{
+    color: #fff;
+    font-size: 20px;
+}
+.pp-right p{
+    color: rgb(116, 116, 116);
+    font-size: 12px;
+}
+.pp-right .list{
+    width: 900px;height: 80px;
+    /* background: rgb(85, 42, 165); */
+    margin-bottom: 10px;
+    display: flex;
+}
+.pp-right .list img{
+    width: 15%; height: 100%;
+    margin-right: 25px;
+}
+.pp-right .list .text-list{
+    width: 100%; height: 100%;
+    border-bottom:1px solid rgb(129, 128, 128);
+    line-height: 40px;
+}
+/* ---------------Shop------------------------ */
+.shop{
+    position: relative;
+    width: 95%; height: 1650px;
+    margin: 25px auto; margin-top: 76px;
+}
+.shop h2{
+    color: aqua;
+    margin-left: 40px;
+    font-size: 22px;
+    padding-top: 20px; padding-bottom: 20px;
+}
+.shop .warpshop{
+    position: relative;
+    width: 1200px; height: 510px;
+    /* background-color: rgb(182, 52, 52); */
+    margin-left: 40px; margin-top: 15px;  margin-bottom: 20px;
+    display: flex;
+}
+.shop .warpshop .shop-left{
+    width: 510px; height: 100%;
+    /* background-color: #a3a392; */
+}
+.shop .warpshop .shop-left img{
+    width: 90%; height: 100%;
+}
+.shop .warpshop .shop-right{
+    width: 600px; height: 100%;
+    color: rgb(168, 164, 164);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* background-color: #a3a392; */
+}
+.shop .warpshop .shop-right h3{
+    color: #e6af94;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.shop .warpshop .shop-right .quantity select{
+    width: 80px; height: 30px;
+    background-color: #afaeae;
+    color: #fff;
+    border-radius: 5px;
+    border-color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.shop .warpshop .shop-right button{
+    cursor: pointer;
+    margin-top: 30px;
+    width: 300px; height: 50px;
+    background-color: #e76320;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+}
+.shop .warpshop .shop-right button:hover{
+    background-color: rgb(116, 14, 14);
+}
+
+
+/* ------------------Footer-------------------------------- */
+.footer{
+    width: 100%; height: 300px; /*Thiết lập chiều rộng, chiều dài*/
+    margin: auto;/*Căn đều các phía*/
+    background-color: #e76320;/*Thiết lập màu nền*/
+}
+.footer h3{
+    padding-top: 30px;/*Căn lề trên cho tiêu đề*/
+    text-align: center;/*Căn giữa chữ*/
+}
+.footer .app{
+    display: flex;/*Điều hướng các phần tử nằm ngang và kế nhau*/
+    width: 350px; height: 60px; /*Thiết lập chiều rộng, chiều dài*/
+    margin: 15px auto;/*Thiết lập khoảng cách trên dưới = 15px; trái phải đều*/
+    justify-content: space-between;
+}
+.footer .app a{
+    text-decoration: none;/*Hủy bỏ thuộc tính gạch chân*/
+}
+.footer .app img{
+    width:145px; height: 35px;/*Thiết lập chiều rộng, chiều dài cho ảnh*/
+    text-align: center;/*Căn giữa phần tử*/
+    border-radius: 10px;/*Bo 4 viền 10px*/
+    margin-right: 5px;/*Cách phải 5px*/
+}
+.footer hr{
+    width: 800px; /*Thiết lập chiều ngang cho thanh hr*/
+    margin: auto;/*Căn đều thanh*/
+    border-color: yellow;/*Tô màu thanh*/
+}
+.footer .icon{
+    width: 350px; height: 20px;/*Thiết lập chiều rộng, chiều dài cho phần tử*/
+    margin: 25px auto;/*Thiết lập khoảng cách trên dưới = 25px; trái phải đều*/
+}
+.footer .icon ul{
+    text-decoration: none;/*Hủy bỏ thuộc tính gạch chân*/
+    display: flex;/*Điều hướng các phần tử nằm ngang và kế nhau*/
+    justify-content: space-between;/*Giúp khoảng cách giữa các phần tử bằng nhau*/
+}
+.footer .icon ul li{
+    list-style-type: none;/*Hủy bỏ thuộc tính đề mục*/
+}
+.footer .icon ul li a{
+    text-decoration: none;/*Hủy bỏ thuộc tính gạch chân*/
+    color: #fff;/*Thiết lập màu chữ*/
+}
+.footer .icon ul li a:hover{
+    color: yellow;/*Thiết lập màu chữ kho hover rê chuột*/
+}
+.footer .copyright{
+   text-align: center;/*Căn giữa chữ*/
+   font-size: 15px;/*Thiết lập font-chữ*/
+   font-weight: bold;/*Thiết lập độ đậm chữ*/
+   color: #fff;/*Thiết lập màu chữ*/
+}
+.footer .email-phone{
+    width: 350px;  height: 40px;/*Thiết lập chiều rộng, chiều dài*/
+    display: flex;/*Điều hướng các phần tử nằm ngang và kế nhau*/
+    margin: auto;/*Căn đều*/
+    justify-content: space-between;/*Giúp khoảng cách giữa các phần tử bằng nhau*/
+    color: black;/*Thiết lập màu chữ*/
+}
